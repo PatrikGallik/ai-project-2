@@ -34,8 +34,8 @@ var h          = 'h1';  // heuristic, can be h1|h2
   var initState = [
     [1, 2, 3, 4],
     [5, 6, 7, 8],
-    [9, 10, 11, 12],
-    [13, 14, 15, 0]
+    [9, 10, 11, 0],
+    [13, 14, 15, 12]
   ];
 
   var finalState = [
@@ -51,6 +51,8 @@ var h          = 'h1';  // heuristic, can be h1|h2
   Node.prototype.state = undefined;     // actual state in the node
   Node.prototype.lastOperand = 'none';  // operand used to get in the state
   Node.prototype.h = undefined;         // value of heuristic function of the state in the node
+
+  var queue;
 
   // queue sorted by heuristic function
   var Queue = function() {
@@ -356,11 +358,14 @@ var h          = 'h1';  // heuristic, can be h1|h2
     console.log("Pocet vykonanych krokov s danou heuristikou: " + stepCounter);
   }
 
-  // access the functions to GUI
-  window.run = run;
-  window.go = go;
+  // if run in browser, access funcions to GUI via window object,
+  // otherwise run simulation
+  if (typeof window === 'undefined') {
+    run(initState);
+  } else {
+    window.run = run;
+    window.go = go;
+  }
 
-  // run task on load
-  //run(initState);
 }) ();
 
