@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Hello World</title>
+  <title>Madafucka solver</title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
@@ -15,10 +15,22 @@
 <body>
 
 <div class="wrapper">
-  <h1>Muthafucka solver</h1>
+
+  <h1>Madafucka solver</h1>
   <p class="desc">Second semestral project from <strong>Artificial Intelligence</strong> course at <strong>FIIT</strong></p>
-  <button id="btn">Screw this! I'm outta here..</button>
-  <div id="canvas"></div>
+  <button id="help-me">Screw this! I'm outta here..</button>
+  <div class="columns" id="columns">
+    <div id="canvas"></div>
+    <div id="steps">
+      <h2>Solution:</h2><br>
+      <ul id="steps-list">
+      </ul>
+      <br>
+      <a id="play" class="play"><i class="fa fa-play"></i>Play</a>
+
+    </div>
+  </div>
+
   <div class="help">
     <div class="arrows">
       <i class="right fa fa-arrow-circle-o-right"></i>
@@ -33,7 +45,6 @@
 <script src="js/kinetic.js"></script>
 <script src="js/solve.js"></script>
 <script src="js/main.js"></script>
-<script src="js/boxes.js"></script>
 
 </body>
 </html>

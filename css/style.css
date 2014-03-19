@@ -12,10 +12,11 @@ h1 {
 #canvas {
     width: 360px;
     text-align: left;
-    position: relative;
+    display: inline-block;
+    /*position: relative;
     left: 50%;
     margin-left: -180px;
-    margin-top: 50px;
+    margin-top: 50px;*/
 }
 
 .arrows {
@@ -71,4 +72,68 @@ button {
 
 button:hover {
     background-color: #ddd;
+}
+
+.columns {
+    width: 900px;
+    margin: 50px auto 20px auto;
+}
+
+.columns #steps {
+    display: none;
+}
+
+.columns.active #steps {
+    display: inline-block;
+}
+
+#steps {
+    display: inline-block;
+    width: 400px;
+    vertical-align: top;
+    text-align: left;
+    padding-left: 30px;
+}
+
+#steps ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0
+}
+
+#steps ul li {
+    display: inline-block;
+    border: 2px solid #ddd;
+    padding: 3px 5px;
+    font-size: 14px;
+    text-transform: uppercase;
+    margin: 0 5px 5px 0;
+}
+
+.play {
+    display: inline-block;
+    border: 2px solid #ddd;
+    padding: 3px 5px;
+    margin-top: -1px;
+    font-size: 14px;
+    text-transform: uppercase;
+}
+
+.play:hover {
+    background-color: #ddd;
+    cursor: pointer;
+}
+
+.play i {
+    color: #999;
+    font-size: 14px;
+    margin-right: 5px;
+}
+
+h2 {
+    margin-top: 0px;
+    padding-top: 0px;
+    display: inline-block;
+    text-transform: uppercase;
+    font-size: 16px;
 }

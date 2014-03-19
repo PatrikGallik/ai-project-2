@@ -11,12 +11,14 @@
 
 "use strict";
 
-// global
+// global config
+var M = 4;     // columns
+var N = 4;     // rows
+var h = 'h1';  // heuristic, can be h1|h2
 
-// config
-var M          = 4;     // columns
-var N          = 4;     // rows
-var h          = 'h1';  // heuristic, can be h1|h2
+// detects if browser or console
+var platform = typeof window === 'undefined' ? 'console' : 'browser';
+var debug = false;
 
 (function () {
 
@@ -54,7 +56,7 @@ var h          = 'h1';  // heuristic, can be h1|h2
 
   var queue;
 
-  // queue sorted by heuristic function
+  // queue sorted by value heuristic function
   var Queue = function() {
 
     var arr = [];
@@ -259,16 +261,16 @@ var h          = 'h1';  // heuristic, can be h1|h2
     var node;
     stepCounter++;
 
-    console.log("")
-    console.log("Step:");
+    if (debug) console.log("");
+    if (debug) console.log("Step:");
 
     // takes node from node queue
     if(node = queue.pop()) {
-      console.log("Vyberam uzol s heuristikou: " + node.h);
+      if (debug) console.log("Vyberam uzol s heuristikou: " + node.h);
 
       if (node.h == 0) {
-        console.log("Nasiel som riesenie.");
-        printResult(node);
+        if (debug) console.log("Nasiel som riesenie.");
+        endSearch(node);
         return;
       }
 
@@ -279,9 +281,9 @@ var h          = 'h1';  // heuristic, can be h1|h2
         newNode.h = heuristic()(state, finalState);
         newNode.parent = node;
         newNode.lastOperand = 'up';
-        console.log("UP:");
-        console.log("heuristika: " + newNode.h);
-        printState(newNode.state);
+        if (debug) console.log("UP:");
+        if (debug) console.log("heuristika: " + newNode.h);
+        if (debug) printState(newNode.state);
         queue.push(newNode);
       }
       if ((node.lastOperand != 'up') && (state = go(node.state, 'down'))) {
@@ -290,9 +292,9 @@ var h          = 'h1';  // heuristic, can be h1|h2
         newNode.h = heuristic()(state, finalState);
         newNode.parent = node;
         newNode.lastOperand = 'down';
-        console.log("DOWN:");
-        console.log("heuristika: " + newNode.h);
-        printState(newNode.state);;
+        if (debug) console.log("DOWN:");
+        if (debug) console.log("heuristika: " + newNode.h);
+        if (debug) printState(newNode.state);;
         queue.push(newNode);
       }
       if ((node.lastOperand != 'right') && (state = go(node.state, 'left'))) {
@@ -301,9 +303,9 @@ var h          = 'h1';  // heuristic, can be h1|h2
         newNode.h = heuristic()(state, finalState);
         newNode.parent = node;
         newNode.lastOperand = 'left';
-        console.log("LEFT:");
-        console.log("heuristika: " + newNode.h);
-        printState(newNode.state);
+        if (debug) console.log("LEFT:");
+        if (debug) console.log("heuristika: " + newNode.h);
+        if (debug) printState(newNode.state);
         queue.push(newNode);
       }
       if ((node.lastOperand != 'left') && (state = go(node.state, 'right'))) {
@@ -312,16 +314,16 @@ var h          = 'h1';  // heuristic, can be h1|h2
         newNode.h = heuristic()(state, finalState);
         newNode.parent = node;
         newNode.lastOperand = 'right';
-        console.log("RIGHT:");
-        console.log("heuristika: " + newNode.h);
-        printState(newNode.state);
+        if (debug) console.log("RIGHT:");
+        if (debug) console.log("heuristika: " + newNode.h);
+        if (debug) printState(newNode.state);
         queue.push(newNode);
       }
 
-      setTimeout(step,1);
+      step();
 
     } else {
-      console.log("Rad uzlov je prazdny. Neexistuje riesenie.");
+      if (debug) console.log("Rad uzlov je prazdny. Neexistuje riesenie.");
     }
   }
 
@@ -337,12 +339,12 @@ var h          = 'h1';  // heuristic, can be h1|h2
     node.price = 1;
     queue.push(node);
     step();
-
   }
 
   // prints results
-  function printResult(node) {
-    console.log("Vysledok: ");
+  function endSearch(node) {
+
+    // create list of directions
     var result = [];
     while(1) {
       if (node.parent == 'none') {
@@ -352,15 +354,24 @@ var h          = 'h1';  // heuristic, can be h1|h2
       node = node.parent;
     }
     result.reverse();
-    for (var i = 0; i < result.length; i++) {
-      console.log(result[i].toUpperCase() + ", ");
+
+    if (platform == 'console') {
+      if (debug) console.log("Vysledok: ");
+      for (var i = 0; i < result.length; i++) {
+        if (debug) console.log(result[i].toUpperCase() + ", ");
+      }
+      if (debug) console.log("Pocet vykonanych krokov s danou heuristikou: " + stepCounter);
     }
-    console.log("Pocet vykonanych krokov s danou heuristikou: " + stepCounter);
+
+    else {
+      window.setResult(result);
+    }
+
   }
 
   // if run in browser, access funcions to GUI via window object,
   // otherwise run simulation
-  if (typeof window === 'undefined') {
+  if (platform == 'console') {
     run(initState);
   } else {
     window.run = run;
