@@ -1,18 +1,49 @@
+/**
+ * Našou úlohou je nájsť riešenie 8-hlavolamu.
+ * Hlavolam je zložený z 8 očíslovaných políčok a jedného prázdneho miesta.
+ * Políčka je možné presúvať hore, dole, vľavo alebo vpravo, ale len ak je tým smerom medzera.
+ * Je vždy daná nejaká východisková a nejaká cieľová pozícia a je potrebné nájsť postupnosť krokov,
+ * ktoré vedú z jednej pozície do druhej.
+ *
+ * @author Patrik Gallik
+ */
 
-// global
-var M         = 3;
-var N         = 3;
-var operands  = ['right', 'down', 'left', 'up'];
-var finalState = [];
+// config
+var M          = 4;     // columns
+var N          = 4;     // rows
+var h          = 'h1';  // heuristic, can be h1|h2
+
+//var initState = [
+//  [4, 1, 3],
+//  [2, 0, 6],
+//  [7, 5, 8]
+//];
+
+//var finalState = [
+//  [1, 2, 3],
+//  [4, 5, 6],
+//  [7, 8, 9]
+
+var initState = [
+  [1, 2, 3, 4],
+  [5, 6, 7, 8],
+  [9, 10, 11, 12],
+  [13, 14, 15, 0]
+];
+
+var finalState = [
+  [1, 2, 3, 4],
+  [5, 6, 0, 7],
+  [9, 10, 11, 8],
+  [13, 14, 15, 12]
+];
 
 // node class
 var Node = function() {};
-Node.prototype.parent = undefined;
-Node.prototype.state = undefined;
-Node.prototype.lastOperand = undefined;
-Node.prototype.price = undefined;
-Node.prototype.h1 = undefined;
-Node.prototype.h2 = undefined;
+Node.prototype.parent = 'none';       // parent of the node
+Node.prototype.state = undefined;     // actual state in the node
+Node.prototype.lastOperand = 'none';  // operand used to get in the state
+Node.prototype.h = undefined;         // value of heuristic function of the state in the node
 
 // queue sorted by heuristic function
 var Queue = function() {
@@ -28,7 +59,7 @@ var Queue = function() {
     if (!arr[0])
       return false;
     var task = arr[0];
-    arr.slice(0,1);
+    arr.splice(0,1);
     return task;
   }
 
@@ -87,6 +118,15 @@ function heuristic2(now, final) {
   }
   return sum;
 }
+
+var heuristicList = {
+  'h1': heuristic1,
+  'h2': heuristic2
+};
+
+var heuristic = function() {
+  return heuristicList[h];
+};
 
 function copy(state) {
   var newState = [];
@@ -176,9 +216,9 @@ function go(state, direction) {
 
 // generate final desired state
 // e.g for 3x3
-// 123
-// 456
-// 780
+// 1 2 3
+// 4 5 6
+// 7 8 0
 function generateFinalState() {
   var state= [];
   for (var i = 0; i < N; i++) {
@@ -202,9 +242,13 @@ function printState(state) {
   console.log("");
 }
 
+// step counter
+stepCounter = 0;
+
 // A* algorithm step for one node
 function step() {
   var node;
+  stepCounter++;
 
   console.log("")
   console.log("Step:");
@@ -223,7 +267,7 @@ function step() {
     if ((node.lastOperand != 'down') && (state = go(node.state, 'up'))) {
       var newNode = new Node(state);
       newNode.state = state;
-      newNode.h = heuristic1(state, finalState);
+      newNode.h = heuristic()(state, finalState);
       newNode.parent = node;
       newNode.lastOperand = 'up';
       console.log("UP:");
@@ -234,7 +278,7 @@ function step() {
     if ((node.lastOperand != 'up') && (state = go(node.state, 'down'))) {
       var newNode = new Node(state);
       newNode.state = state;
-      newNode.h = heuristic1(state, finalState);
+      newNode.h = heuristic()(state, finalState);
       newNode.parent = node;
       newNode.lastOperand = 'down';
       console.log("DOWN:");
@@ -245,7 +289,7 @@ function step() {
     if ((node.lastOperand != 'right') && (state = go(node.state, 'left'))) {
       var newNode = new Node(state);
       newNode.state = state;
-      newNode.h = heuristic1(state, finalState);
+      newNode.h = heuristic()(state, finalState);
       newNode.parent = node;
       newNode.lastOperand = 'left';
       console.log("LEFT:");
@@ -256,7 +300,7 @@ function step() {
     if ((node.lastOperand != 'left') && (state = go(node.state, 'right'))) {
       var newNode = new Node(state);
       newNode.state = state;
-      newNode.h = heuristic1(state, finalState);
+      newNode.h = heuristic()(state, finalState);
       newNode.parent = node;
       newNode.lastOperand = 'right';
       console.log("RIGHT:");
@@ -265,7 +309,7 @@ function step() {
       queue.push(newNode);
     }
 
-    setTimeout(step,500);
+    setTimeout(step,1);
 
   } else {
     console.log("Rad uzlov je prazdny. Neexistuje riesenie.");
@@ -275,7 +319,6 @@ function step() {
 // runs problem solving
 // @param state of problem
 function run(state) {
-  finalState = generateFinalState();
   queue = new Queue();
   var node = new Node();
   node.state = copy(state);
@@ -283,13 +326,12 @@ function run(state) {
   node.h1 = heuristic1(node.state, finalState);
   node.h2 = heuristic2(node.state, finalState);
   node.price = 1;
-  node.lastOperand = 'none';
-  node.parent = 'none';
   queue.push(node);
   step();
 
 }
 
+// prints results
 function printResult(node) {
   console.log("Vysledok: ");
   var result = [];
@@ -304,17 +346,10 @@ function printResult(node) {
   for (var i = 0; i < result.length; i++) {
     console.log(result[i].toUpperCase() + ", ");
   }
+  console.log("Pocet vykonanych krokov s danou heuristikou: " + stepCounter);
 }
 
-var initState = [
-  [0, 1, 3],
-  [4, 2, 6],
-  [7, 5, 8]
-];
-
-
-// run
+// run task
 run(initState);
 
-//console.log(result);
 
