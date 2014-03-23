@@ -344,8 +344,6 @@ var debug = true;
   // @param state of the problem
   function run(state, heuristic) {
 
-    console.log(heuristic);
-
     if (heuristic) {
       h = heuristic;
     }
