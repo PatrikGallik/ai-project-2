@@ -26,8 +26,21 @@
       <file leaf-file-name="index.html" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="32" column="34" selection-start="1327" selection-end="1327" vertical-scroll-proportion="0.8495575" vertical-offset="0" max-vertical-offset="945">
+            <state line="32" column="34" selection-start="1327" selection-end="1327" vertical-scroll-proportion="0.45132744" vertical-offset="225" max-vertical-offset="945">
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="tests.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/tests.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="87" column="13" selection-start="1167" selection-end="1167" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1410">
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+                <marker date="1395605312000" expanded="true" signature="101:173" placeholder="[...]" />
+                <marker date="1395605312000" expanded="true" signature="1029:1093" placeholder="[...]" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -44,7 +57,7 @@
       <file leaf-file-name="main.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="121" column="12" selection-start="2082" selection-end="2083" vertical-scroll-proportion="-72.6" vertical-offset="0" max-vertical-offset="2790">
+            <state line="121" column="12" selection-start="2082" selection-end="2083" vertical-scroll-proportion="-71.4" vertical-offset="30" max-vertical-offset="2790">
               <folding />
             </state>
           </provider>
@@ -53,12 +66,12 @@
       <file leaf-file-name="solve.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/solve.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="175" column="18" selection-start="4548" selection-end="4555" vertical-scroll-proportion="-4.1136365" vertical-offset="1934" max-vertical-offset="6045">
+            <state line="12" column="0" selection-start="412" selection-end="686" vertical-scroll-proportion="-4.090909" vertical-offset="0" max-vertical-offset="5850">
               <folding>
-                <element signature="e#2240#2950#0" expanded="false" />
-                <element signature="e#5492#5691#0" expanded="false" />
-                <element signature="e#8097#8376#0" expanded="false" />
-                <element signature="e#8454#8560#0" expanded="false" />
+                <element signature="e#2081#2791#0" expanded="false" />
+                <element signature="e#5333#5532#0" expanded="false" />
+                <element signature="e#7938#8217#0" expanded="false" />
+                <element signature="e#8295#8401#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -88,6 +101,7 @@
         <option value="$PROJECT_DIR$/css/style.css" />
         <option value="$PROJECT_DIR$/js/main.js" />
         <option value="$PROJECT_DIR$/js/solve.js" />
+        <option value="$PROJECT_DIR$/js/tests.js" />
         <option value="$PROJECT_DIR$/index.html" />
       </list>
     </option>
@@ -320,10 +334,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="48" column="4" selection-start="1028" selection-end="1028" vertical-scroll-proportion="0.0" vertical-offset="720" max-vertical-offset="4110">
           <folding>
-            <element signature="e#2240#2950#0" expanded="false" />
-            <element signature="e#5492#5691#0" expanded="false" />
-            <element signature="e#8097#8376#0" expanded="false" />
-            <element signature="e#8454#8560#0" expanded="false" />
+            <element signature="e#2081#2791#0" expanded="false" />
+            <element signature="e#5333#5532#0" expanded="false" />
+            <element signature="e#7938#8217#0" expanded="false" />
+            <element signature="e#8295#8401#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -363,28 +377,39 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/js/solve.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="0" selection-start="412" selection-end="686" vertical-scroll-proportion="-4.090909" vertical-offset="0" max-vertical-offset="5850">
+          <folding>
+            <element signature="e#2081#2791#0" expanded="false" />
+            <element signature="e#5333#5532#0" expanded="false" />
+            <element signature="e#7938#8217#0" expanded="false" />
+            <element signature="e#8295#8401#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/js/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="121" column="12" selection-start="2082" selection-end="2083" vertical-scroll-proportion="-72.6" vertical-offset="0" max-vertical-offset="2790">
+        <state line="121" column="12" selection-start="2082" selection-end="2083" vertical-scroll-proportion="-71.4" vertical-offset="30" max-vertical-offset="2790">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/solve.js">
+    <entry file="file://$PROJECT_DIR$/js/tests.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="175" column="18" selection-start="4548" selection-end="4555" vertical-scroll-proportion="-4.1136365" vertical-offset="1934" max-vertical-offset="6045">
+        <state line="87" column="13" selection-start="1167" selection-end="1167" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1410">
           <folding>
-            <element signature="e#2240#2950#0" expanded="false" />
-            <element signature="e#5492#5691#0" expanded="false" />
-            <element signature="e#8097#8376#0" expanded="false" />
-            <element signature="e#8454#8560#0" expanded="false" />
+            <element signature="n#!!doc" expanded="true" />
+            <marker date="1395605312000" expanded="true" signature="101:173" placeholder="[...]" />
+            <marker date="1395605312000" expanded="true" signature="1029:1093" placeholder="[...]" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="32" column="34" selection-start="1327" selection-end="1327" vertical-scroll-proportion="0.8495575" vertical-offset="0" max-vertical-offset="945">
+        <state line="32" column="34" selection-start="1327" selection-end="1327" vertical-scroll-proportion="0.45132744" vertical-offset="225" max-vertical-offset="945">
           <folding />
         </state>
       </provider>

@@ -11,34 +11,20 @@
 "use strict";
 
 // global config
-var M = 4;     // columns
-var N = 4;     // rows
-var h = 'h1';  // heuristic, can be h1|h2
-
-//var initState = [
-//  [1, 2, 3],
-//  [4, 5, 6],
-//  [7, 0, 8]
-//];
-//
-//var finalState = [
-//  [1, 2, 3],
-//  [4, 5, 6],
-//  [7, 8, 0]
-//];
+var M = 5;     // columns
+var N = 3;     // rows
+var h = 'h2';  // heuristic, can be h1|h2
 
 var initState = [
-  [1, 2, 3, 4],
-  [5, 6, 7, 8],
-  [9, 0, 10, 11],
-  [13, 14, 15, 12]
+  [2, 8, 3, 5, 9],
+  [1, 13, 12, 4, 0],
+  [6, 11, 7, 14, 10]
 ];
 
 var finalState = [
-  [1, 2, 3, 4],
-  [5, 6, 7, 8],
-  [9, 10, 11, 12],
-  [13, 14, 15, 0]
+  [1, 2, 3, 4, 5],
+  [6, 7, 8, 9, 10],
+  [11, 12, 13, 14, 0]
 ];
 
 // detects if browser or console
@@ -437,7 +423,8 @@ var debug = true;
       for (var i = 0; i < result.length; i++) {
         if (debug) console.log(result[i].toUpperCase() + ", ");
       }
-      if (debug) console.log("Pocet vykonanych krokov s danou heuristikou: " + price);
+      if (debug) console.log("Pocet vykonanych krokov vo vysledku: " + price);
+      if (debug) console.log("Pocet preskumanych uzlov:: " + nodeCounter);
     }
 
     else {
