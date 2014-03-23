@@ -4,19 +4,27 @@
 
 	var stage = new Kinetic.Stage({
 		container: 'canvas',
-		width: 360,
-		height: 360
+		width: 270,
+		height: 270
 	});
 
 	var layer = new Kinetic.Layer({
   });
 
   var state = [
-    [1, 2, 3, 4],
-    [5, 10, 6, 8],
-    [0, 9, 7, 12],
-    [13, 14, 11, 15]
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 0]
   ];
+
+  finalState = [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 0]
+  ];
+
+  N = 3;
+  M = 3;
 
   var row = 90;
   var col = 90;
@@ -108,15 +116,17 @@
 
   // event listener to user button click
   $('#help-me').on('click', function() {
+    $('#loader').addClass('active');
     $('#columns').addClass('active');
-    window.run(state);
+    var heuristic =  $('input[name=heuristic]:checked').val();
+    window.run(state, heuristic);
   });
 
   var steps = $('#steps-list');
   var result;
 
   // function called by solve.js when problem is solved
-  window.setResult = function(rslt) {
+  window.setResult = function(rslt, nodeCount) {
     // clear previous steps (if any)
     result = rslt;
     steps.empty();
@@ -133,6 +143,11 @@
       steps.append(step);
     }
     played = false;
+
+    $('#nodeCount').html(nodeCount);
+
+    $('#loader').removeClass('active');
+
 
     // print something if result si empty
     if (rslt.length == 0) {

@@ -10,9 +10,10 @@ h1 {
 }
 
 #canvas {
-    width: 360px;
+    width: 270px;
     text-align: left;
     display: inline-block;
+    margin-left: 10px;
     /*position: relative;
     left: 50%;
     margin-left: -180px;
@@ -55,6 +56,7 @@ h1 {
 
 .help {
     margin-top: 15px;
+    margin-bottom: 15px;
     color: #999;
 }
 
@@ -75,9 +77,31 @@ button:hover {
 }
 
 .columns {
-    width: 900px;
+    width: 810px;
     margin: 50px auto 20px auto;
+    position: relative;
 }
+
+#loader {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255,255,255,0.8);
+    z-index: 999;
+    display: none;
+}
+
+#loader.active {
+    display: block;
+}
+
+#loader img {
+    margin: 120px auto;
+    opacity: 0.5;
+}
+
 
 .columns #steps {
     display: none;
@@ -93,6 +117,10 @@ button:hover {
     vertical-align: top;
     text-align: left;
     padding-left: 30px;
+}
+
+#steps p {
+    margin-top: 0px;
 }
 
 #steps ul {
@@ -136,4 +164,14 @@ h2 {
     display: inline-block;
     text-transform: uppercase;
     font-size: 16px;
+}
+
+.heuristics {
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+.heuristics input {
+    margin-right: 5px;
+    margin-left: 10px;
 }

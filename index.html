@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Madafucka solver</title>
+  <title>Rebus solver</title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
@@ -16,13 +16,21 @@
 
 <div class="wrapper">
 
-  <h1>Madafucka solver</h1>
+  <h1>Rebus solver</h1>
   <p class="desc">Second semestral project from <strong>Artificial Intelligence</strong> course at <strong>FIIT</strong></p>
   <button id="help-me">Screw this! I'm outta here..</button>
+  <div class="heuristics">
+    <label><input type="radio" name="heuristic" checked="checked" value="h1">Heuristics 1.</label>
+    <label><input type="radio" name="heuristic" value="h2">Heuristics 2.</label>
+  </div>
   <div class="columns" id="columns">
+    <div id="loader">
+      <img src="img/loader.gif">
+    </div>
     <div id="canvas"></div>
     <div id="steps">
-      <h2>Solution:</h2><br>
+      <h2>Solution:</h2>
+      <p>Pocet vytvorenych uzlov v algoritme: <span id="nodeCount"></span></p>
       <ul id="steps-list">
       </ul>
       <br>
